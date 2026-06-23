@@ -31,9 +31,9 @@ public class User {
 	private Role role;
 	
 	@NotBlank
-	@Pattern(regexp = "^[0-9]{10}$", message = "")
+	@Pattern(
+			regexp = "^[0-9]{10}$", 
+			message = "Phone number must contain exactly 10 digits"
+	)
 	private String phone;
-	
-	// getters and setters
-		
 }

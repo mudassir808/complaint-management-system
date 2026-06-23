@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Edit Complaint</title>
+</head>
+
+<body>
+
+<h2>Edit Complaint</h2>
+
+<form th:action="@{/update-complaint}"
+      th:object="${complaint}"
+      method="post">
+
+    <input type="hidden"
+           th:field="*{complaintId}">
+
+    Title:
+
+    <input type="text"
+           th:field="*{title}">
+    <br><br>
+
+    Description:
+
+    <input type="text"
+           th:field="*{description}">
+    <br><br>
+
+    Remarks:
+
+    <input type="text"
+           th:field="*{remarks}">
+    <br><br>
+
+    <button type="submit">
+        Update
+    </button>
+
+</form>
+
+</body>
+</html>

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.mudassir.cms.enums.ComplaintStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -15,9 +16,15 @@ public class Complaint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long complaintId;
 	
+	@NotBlank(message = "Title is required")
 	private String title;
+	
+	@NotBlank(message = "Description is required")
 	private String description;
+	
+	@Enumerated(EnumType.STRING)
 	private ComplaintStatus status;
+	
 	private String remarks;
 	private LocalDate createdDate;
 	

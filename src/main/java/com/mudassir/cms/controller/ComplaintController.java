@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import com.mudassir.cms.entity.Complaint;
 import com.mudassir.cms.service.ComplaintService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/complaints")
 public class ComplaintController {
@@ -18,7 +20,7 @@ public class ComplaintController {
     }
 
     @PostMapping
-    public Complaint addComplaint(@RequestBody Complaint complaint) {
+    public Complaint addComplaint(@Valid @RequestBody Complaint complaint) {
         return complaintService.addComplaint(complaint);
     }
 
