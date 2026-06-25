@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mudassir.cms.entity.Complaint;
+import com.mudassir.cms.entity.User;
+import com.mudassir.cms.enums.ComplaintStatus;
 import com.mudassir.cms.repository.ComplaintRepository;
 
 @Service
@@ -51,6 +53,30 @@ public class ComplaintServiceImpl implements ComplaintService {
         Complaint complaint = getComplaintById(complaintId);
 
         complaintRepository.delete(complaint);
+    }
+    
+    @Override
+    public List<Complaint> getComplaintsByEmployee(
+            User employee) {
+
+        return complaintRepository
+                .findByAssignedEmployee(employee);
+    }
+    
+    @Override
+    public Complaint updateComplaintStatus(
+            Long complaintId,
+            ComplaintStatus status,
+            String remarks) {
+
+        Complaint complaint =
+                getComplaintById(complaintId);
+
+        complaint.setStatus(status);
+
+        complaint.setRemarks(remarks);
+
+        return complaintRepository.save(complaint);
     }
 }
 

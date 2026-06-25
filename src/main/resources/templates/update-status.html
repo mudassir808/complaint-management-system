@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Update Status</title>
+</head>
+
+<body>
+
+<h2>Update Complaint</h2>
+
+<form th:action="@{/employee/update-status}"
+      method="post">
+
+    <input type="hidden"
+           name="complaintId"
+           th:value="${complaint.complaintId}">
+
+    Status:
+
+    <select name="status">
+
+        <option
+            th:each="status : ${statuses}"
+            th:value="${status}"
+            th:text="${status}">
+        </option>
+
+    </select>
+
+    <br><br>
+
+    Remarks:
+
+    <input type="text"
+           name="remarks">
+
+    <br><br>
+
+    <button type="submit">
+        Update
+    </button>
+
+</form>
+
+</body>
+</html>

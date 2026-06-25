@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Assign Complaint</title>
+</head>
+
+<body>
+
+<h2>Assign Complaint</h2>
+
+<form th:action="@{/assign-complaint}"
+      method="post">
+
+    Complaint:
+
+    <select name="complaintId">
+
+        <option
+            th:each="complaint : ${complaints}"
+            th:value="${complaint.complaintId}"
+            th:text="${complaint.title}">
+        </option>
+
+    </select>
+
+    <br><br>
+
+    Employee:
+
+    <select name="employeeId">
+
+        <option
+            th:each="employee : ${employees}"
+            th:value="${employee.userId}"
+            th:text="${employee.name}">
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">
+        Assign
+    </button>
+
+</form>
+
+</body>
+</html>

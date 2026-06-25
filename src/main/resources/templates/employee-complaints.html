@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>My Complaints</title>
+</head>
+
+<body>
+
+<h2>Assigned Complaints</h2>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+<tr th:each="complaint : ${complaints}">
+
+    <td th:text="${complaint.complaintId}"></td>
+
+    <td th:text="${complaint.title}"></td>
+
+    <td th:text="${complaint.status}"></td>
+
+    <td>
+
+        <a th:href=
+           "@{/employee/update-status/{id}
+           (id=${complaint.complaintId})}">
+           Update
+        </a>
+
+    </td>
+
+</tr>
+
+</table>
+
+</body>
+</html>
